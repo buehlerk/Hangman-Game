@@ -6,6 +6,19 @@ Author - Marc Shepard
 
 class Main {
   public static void main(String[] args) {
+    /*
+    while (true) {
+      State s = State.restore();
+      if (s != null) {
+        System.out.println ("Welcome back!\n");
+      } else {
+        s = new State();
+        s.wins = 0;
+        s.losses = 0;
+      }
+      s.save();
+    }
+    */
     Hangman g = new Hangman();
     g.play();
   }

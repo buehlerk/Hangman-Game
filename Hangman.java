@@ -124,7 +124,8 @@ public class Hangman {
   public void play() {
     System.out.println(
         "\nWelcome to Hangman! \nIn this game, you will try to guess all the letters in a secret word before you reach the maximum amount of wrong guesses. \nIf you guess every letter in the word, you win! \nIf you reach the maximum number of wrong guesses and haven't found every letter in the word, you lose!");
-    System.out.println("");
+    System.out.println("Number of Wins: " + recWin + "\nNumber of Losses: " + recLos);
+    System.out.println();
     switch(Utils.inputNum("Would you like to play simple(1) or advanced(2) mode? Simple mode has a visual hangman and advanced mode allows you to select your difficulty. Type the corresponding number", 2)){
       case 1:
         maxWrongGuesses = 6;
