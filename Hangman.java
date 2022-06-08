@@ -92,6 +92,7 @@ public class Hangman {
   private int recLos;
   private static String[] visuals;
   private boolean images;
+  State stat = State.restore();
 
   // Sets up the games variables
   public Hangman() {
@@ -107,6 +108,7 @@ public class Hangman {
     failedGuesses = new ArrayList<String>();
     recWin = 0;
     recLos = 0;
+    
     //Visuals created by Chris Horton
     //Visuals adapted from Python for Java by Kira Buehler
     visuals = new String[] {
@@ -122,9 +124,10 @@ public class Hangman {
 
   // Runs the Game
   public void play() {
+    setUp(stat);
     System.out.println(
         "\nWelcome to Hangman! \nIn this game, you will try to guess all the letters in a secret word before you reach the maximum amount of wrong guesses. \nIf you guess every letter in the word, you win! \nIf you reach the maximum number of wrong guesses and haven't found every letter in the word, you lose!");
-    System.out.println("Number of Wins: " + recWin + "\nNumber of Losses: " + recLos);
+    System.out.println(stat);
     System.out.println();
     switch(Utils.inputNum("Would you like to play simple(1) or advanced(2) mode? Simple mode has a visual hangman and advanced mode allows you to select your difficulty. Type the corresponding number", 2)){
       case 1:
@@ -166,6 +169,7 @@ public class Hangman {
         numWrongGuesses += 1;
       }
     }
+    stat.save();
     System.out.println("The word was: " + curWord);
     System.out.println("Number of Wins: " + recWin + "\nNumber of Losses: " + recLos);
     switch (Utils.inputNum(
@@ -201,11 +205,13 @@ public class Hangman {
       System.out.println("");
       System.out.println("You Won!");
       recWin += 1;
+      stat.addWin();
       return true;
     } else if (numWrongGuesses == maxWrongGuesses) {
       System.out.println(visuals[6]);
       System.out.println("You Lost!");
       recLos += 1;
+      stat.addLos();
       return true;
     } else {
       return false;
@@ -266,5 +272,10 @@ public class Hangman {
     numWrongGuesses = 0;
     hint = "";
     play();
+  }
+
+  public void setUp(State sta){
+    recWin = sta.getWins();
+    recLos = sta.getLos();
   }
 }

@@ -1,4 +1,3 @@
-/*
 import java.io.Serializable;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -10,6 +9,22 @@ import java.io.IOException;
 public class State implements Serializable {
   public int losses;
   public int wins;
+
+  public int getLos(){
+    return losses;
+  }
+
+  public void addLos(){
+    losses += 1;
+  }
+
+  public int getWins(){
+    return wins;
+  }
+
+  public void addWin(){
+    wins +=1;
+  }
 
   public String toString () {
     return "Wins: " + wins + "\nLosses: " + losses;
@@ -50,4 +65,3 @@ public class State implements Serializable {
 	  }
   }
 }
-*/
