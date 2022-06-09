@@ -9,8 +9,13 @@ class Main {
   public static void main(String[] args) {
 
     State st = State.restore();
-     if (st != null) {
+    if (st != null) {
       System.out.println("Welcome back!");
+      if (Utils.inputNum(
+          "Would you like to continue with your prior history(1) or start over(2)? Please type the associated number",
+          2) == 2) {
+        st.reset();
+      }
     } else {
       st = new State();
       st.wins = 0;

@@ -124,15 +124,8 @@ public class Hangman {
 
   // Runs the Game
   public void play() {
-    switch (Utils.inputNum("Would you like to continue with your prior history(1) or start over(2)? Please type the associated number", 2)){
-        case 1:
-          break;
-        case 2:
-          stat.reset();
-          System.out.println(
+    System.out.println(
         "\nWelcome to Hangman! \nIn this game, you will try to guess all the letters in a secret word before you reach the maximum amount of wrong guesses. \nIf you guess every letter in the word, you win! \nIf you reach the maximum number of wrong guesses and haven't found every letter in the word, you lose!");
-          break;
-      }
     setUp(stat);
     System.out.println(stat);
     System.out.println();
