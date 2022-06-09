@@ -18,6 +18,11 @@ public class State implements Serializable {
     losses += 1;
   }
 
+  public void reset(){
+    losses = 0;
+    wins = 0;
+  }
+
   public int getWins(){
     return wins;
   }
